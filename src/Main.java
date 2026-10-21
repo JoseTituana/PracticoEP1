@@ -1,15 +1,19 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Dispositivo d1 = new Dispositivo(1, "Sensor A");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        System.out.println("Consultar resumen: " + d1.obtenerResumen());
+        System.out.println("Desactivar dispositivo: " + d1.desactivar());
+        System.out.println("Desactivarlo nuevamente: " + d1.desactivar());
+
+        d1.setNombre("");
+        System.out.println("Cambiar nombre a \"\": " + d1.getNombre());
+
+        try { new Dispositivo(-1, "Malo"); } catch (Exception e) { System.out.println("Error atrapado: " + e.getMessage()); }
+        try { new Dispositivo(2, ""); } catch (Exception e) { System.out.println("Error atrapado: " + e.getMessage()); }
+
+        new Dispositivo(2, "Sensor B");
+        new Dispositivo(3, "Sensor C");
+        System.out.println("Contador total de dispositivos creados: " + Dispositivo.getContadorDispositivos());
     }
 }
